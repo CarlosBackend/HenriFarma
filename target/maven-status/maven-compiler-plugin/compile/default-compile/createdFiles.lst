@@ -15,7 +15,6 @@ Telas\AlterarProduto.class
 Telas\AlterarProduto$2.class
 Telas\RelatorioVendas$2.class
 HenriFarmas\Venda.class
-HenriFarmas\SalvarVenda$1.class
 Telas\Principal$3.class
 Telas\RelatorioProdutos$2.class
 Telas\TelaAdicionarVenda.class
@@ -31,7 +30,6 @@ Telas\AlterarProduto$1.class
 Telas\RelatorioProdutos$3.class
 Telas\RelatorioClientes$2.class
 Telas\TelaAdicionarVenda$3.class
-br\com\senac\henrifarmas\HenriFarmas.class
 Telas\RelatorioVendas$3.class
 Telas\Principal.class
 HenriFarmas\Funcionario.class
@@ -57,7 +55,6 @@ Telas\RelatórioFuncionarios$1.class
 Telas\TelaAdicionarVenda$1.class
 Telas\RelatorioVendas.class
 Telas\CadastroUsuario$2.class
-HenriFarmas\SalvarVenda.class
 Telas\Login.class
 Telas\Principal$1.class
 Telas\AlterarProduto$3.class
