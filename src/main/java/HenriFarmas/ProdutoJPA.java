@@ -1,6 +1,4 @@
-
 package HenriFarmas;
-
 import HenriFarmas.JPAConnect;
 import HenriFarmas.Produto;
 import jakarta.persistence.EntityManager;

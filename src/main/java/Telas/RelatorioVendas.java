@@ -1,4 +1,5 @@
 package Telas;
+import HenriFarmas.ItemVenda;
 import HenriFarmas.Venda;
 import HenriFarmas.VendaJPA;
 import java.util.List;
@@ -13,15 +14,23 @@ public class RelatorioVendas extends javax.swing.JFrame {
         preencher(listar);
     }
     public void preencher(List<Venda> vendas){
-        String coluna[] = {"ID","Data","TOTAL","CLIENTE"};
+        String coluna[] = {"ID","Data","TOTAL","CLIENTE", "PRODUTO"};
         String dados[][] = new String[vendas.size()][coluna.length];
         int i = 0;
         for(Venda v : vendas){
+            StringBuilder produtos = new StringBuilder();
+            for(ItemVenda ven : v.getItens()){
+                produtos.append(ven.getProduto().getNome()).append(", ");
+            }
+            if(produtos.length()>0){
+                produtos.setLength(produtos.length() -2);
+            }
             dados[i] = new String[]{
                 String.valueOf(v.getId()),
                 String.valueOf(v.getData()),
                 String.valueOf(v.getTotal()),
-                v.getCliente().getNome()
+                v.getCliente().getNome(),
+                produtos.toString()
             };
             i++;
         }
@@ -100,13 +109,12 @@ public class RelatorioVendas extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2)
-                                .addGap(168, 168, 168)))))
-                .addContainerGap(37, Short.MAX_VALUE))
+                                .addGap(26, 26, 26)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 829, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(310, 310, 310)
+                                .addComponent(jLabel2)))))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,17 +122,18 @@ public class RelatorioVendas extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(336, 336, 336))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
                         .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ButtonRemover)
-                            .addComponent(ButtonCadastrar))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(336, 336, 336))))
+                            .addComponent(ButtonCadastrar)
+                            .addComponent(ButtonRemover))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -135,7 +144,7 @@ public class RelatorioVendas extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

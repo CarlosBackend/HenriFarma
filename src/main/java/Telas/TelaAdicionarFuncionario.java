@@ -3,7 +3,9 @@ package Telas;
 
 import HenriFarmas.Funcionario;
 import HenriFarmas.FuncionarioJPA;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class TelaAdicionarFuncionario extends javax.swing.JFrame {
 
@@ -12,7 +14,20 @@ public class TelaAdicionarFuncionario extends javax.swing.JFrame {
         initComponents();
     }
 
-    
+    public void  preencherTabela(List<Funcionario> funcionario){
+        String colunas[] = {"ID","Nome","CPF","Cargo"};
+        String dados[][] = new String[funcionario.size()][colunas.length];
+        int i = 0;
+        for(Funcionario f: funcionario){
+            dados[i] = new String[]{
+                String.valueOf(f.getId()),
+                f.getNome(),
+                f.getCpf(),
+                f.getCargo()
+            };
+            i++;
+        }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -181,7 +196,6 @@ public class TelaAdicionarFuncionario extends javax.swing.JFrame {
         f.setCargo(cargo);
         FuncionarioJPA.cadastrarFuncionario(f); 
         JOptionPane.showMessageDialog(null, "Funcionario cadastrado com sucesso!");
-        
         }catch(Exception e){
             System.out.println("Erro " + e.getMessage());
         }

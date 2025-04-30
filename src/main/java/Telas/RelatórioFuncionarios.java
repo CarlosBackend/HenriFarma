@@ -148,6 +148,9 @@ public class RelatórioFuncionarios extends javax.swing.JFrame {
     private void ButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCadastrarActionPerformed
         TelaAdicionarFuncionario f = new TelaAdicionarFuncionario();
         f.setVisible(true);
+        List<Funcionario> lista = FuncionarioJPA.listar();
+        preencherTabela(lista);
+        
     }//GEN-LAST:event_ButtonCadastrarActionPerformed
 
     private void ButtonRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonRemoverActionPerformed

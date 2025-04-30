@@ -28,7 +28,7 @@ public class VendaJPA {
        EntityManager em = JPAConnect.conectar();
        List<Venda> vendas = new ArrayList<>();
        try{
-           Query query = em.createQuery("SELECT v FROM venda v");
+          Query query = em.createQuery("SELECT v FROM venda v");
            vendas = query.getResultList();
        }catch (Exception e) {
             System.out.println("Erro ao listar vendas: " + e.getMessage());
